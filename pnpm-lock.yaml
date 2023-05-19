@@ -67,6 +67,9 @@ importers:
       ethers:
         specifier: ^5.7.2
         version: 5.7.2
+      phaser:
+        specifier: ^3.60.0
+        version: 3.60.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -2636,6 +2639,10 @@ packages:
       - bufferutil
       - utf-8-validate
 
+  /eventemitter3@5.0.1:
+    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
+    dev: false
+
   /execa@7.1.1:
     resolution: {integrity: sha512-wH0eMf/UXckdUYnO21+HDztteVv05rq2GXksxT4fCGeHkBhw1DROXh40wcjMcRqDOWE7iPJ4n3M7e2+YFP+76Q==}
     engines: {node: ^14.18.0 || ^16.14.0 || >=18.0.0}
@@ -3728,6 +3735,12 @@ packages:
     dependencies:
       process: 0.11.10
       util: 0.10.4
+
+  /phaser@3.60.0:
+    resolution: {integrity: sha512-IKUy35EnoEVcl2EmJ8WOyK4X8OoxHYdlhZLgRGpNrvD1fEagYffhVmwHcapE/tGiLgyrnezmXIo5RrH2NcrTHw==}
+    dependencies:
+      eventemitter3: 5.0.1
+    dev: false
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}

@@ -6,16 +6,31 @@ import { SetupNetworkResult } from "./setupNetwork";
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
-  { worldSend, txReduced$, singletonEntity }: SetupNetworkResult,
-  { Counter }: ClientComponents
+  { playerEntity, worldSend, txReduced$ }: SetupNetworkResult,
+  { Position }: ClientComponents
 ) {
-  const increment = async () => {
-    const tx = await worldSend("increment", []);
+  const spawn = async (x: number, y: number) => {
+    const tx = await worldSend("spawn", [x, y]);
     await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
-    return getComponentValue(Counter, singletonEntity);
+  };
+
+  const move = async (x: number, y: number) => {
+    if (!playerEntity) {
+      throw new Error("No player");
+    }
+
+    const moveId = ":1233434353";
+    Position.addOverride(moveId, {
+      entity: playerEntity,
+      value: { x, y },
+    });
+
+    const tx = await worldSend("move", [x, y]);
+    await awaitStreamValue(txReduced$, (txHash) => txHash === tx.hash);
   };
 
   return {
-    increment,
+    spawn,
+    move,
   };
 }
